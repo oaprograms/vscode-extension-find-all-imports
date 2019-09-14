@@ -2,7 +2,7 @@
 	"name": "find-all-imports",
 	"displayName": "Find All Imports",
 	"description": "VS Code extension that finds all Javascript files that import current file",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
