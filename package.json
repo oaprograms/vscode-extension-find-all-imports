@@ -9,6 +9,7 @@
 	"categories": [
 		"Other"
 	],
+	"publisher": "dioco",
 	"activationEvents": [
 		"onCommand:extension.findAllImports"
 	],
