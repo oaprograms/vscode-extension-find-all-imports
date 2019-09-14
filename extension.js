@@ -86,11 +86,11 @@ function activate(context) {
 			// display file list
 			vscode.window.showQuickPick(filesThatImportCurrentFile.map((fn, index) => ({
 				id: index,
-				label: fn,
-				description: ''
+				label: fn.split('\\')[fn.split('\\').length - 1],
+				description: fn
 				//detail: 'aaaaaaaaaaaa'
 			}))).then(item => {
-				vscode.workspace.openTextDocument(item.label).then(document => {
+				vscode.workspace.openTextDocument(item.description).then(document => {
 					vscode.window.showTextDocument(document, {preview: false});
 				});
 			});
