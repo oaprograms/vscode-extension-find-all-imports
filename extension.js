@@ -83,17 +83,28 @@ function activate(context) {
 				}
 			}
 			
-			// display file list
-			vscode.window.showQuickPick(filesThatImportCurrentFile.map((fn, index) => ({
-				id: index,
-				label: fn.split('\\')[fn.split('\\').length - 1],
-				description: fn
-				//detail: 'aaaaaaaaaaaa'
-			}))).then(item => {
-				vscode.workspace.openTextDocument(item.description).then(document => {
-					vscode.window.showTextDocument(document, {preview: false});
+			if (filesThatImportCurrentFile.length) {
+				// display file list
+				vscode.window.showQuickPick(filesThatImportCurrentFile.map((fn, index) => ({
+					id: index,
+					label: fn.split('\\').pop(),
+					description: fn
+					//detail: 'aaaaaaaaaaaa'
+				}))).then(item => {
+					vscode.workspace.openTextDocument(item.description).then(document => {
+						vscode.window.showTextDocument(document, {preview: false});
+					});
 				});
-			});
+			} else {
+				// show 'no files found'
+				vscode.window.showQuickPick([{
+					label: 'No files found.'
+				}]).then(item => {
+					// do nothing
+				});
+			}
+
+			
 		}
 	});
 
